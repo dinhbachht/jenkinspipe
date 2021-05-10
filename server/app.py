@@ -1,15 +1,10 @@
-from flask import Flask, request, render_template
-import socket
+from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    info = {
-        "hostname": socket.gethostname(),
-        "your_ip": request.remote_addr
-    }
-    return render_template('index.html', info=info)
+    return '_home page_'
 
 @app.route('/hello')
 def hello():
