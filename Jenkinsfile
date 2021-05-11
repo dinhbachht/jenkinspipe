@@ -22,12 +22,16 @@ pipeline {
     }
 
     stage("build") {
-      agent { node {label 'master'}}
+      agent {
+        node {
+          label 'master'
+        }
+      }
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${BUILD_NUMBER}-${GIT_COMMIT.substring(0,7)}"
       }
       steps {
-        sh "sudo su -"
+        sh "exit"
         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
         }
