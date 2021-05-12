@@ -8,4 +8,4 @@ def test_dummy3():
 
 def test_cal():
     assert 1+1 == 2
-    assert 1 + 3 == 4
+    assert 1 + 2 == 3
